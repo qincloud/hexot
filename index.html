@@ -83,13 +83,40 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>你好，欢迎来到我的个人技术博客。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h3 id="hexo小白傻瓜安装教程"><a href="#hexo小白傻瓜安装教程" class="headerlink" title="hexo小白傻瓜安装教程"></a>hexo小白傻瓜安装教程</h3><p><a href="http://www.jianshu.com/p/e99ed60390a8" target="_blank" rel="noopener">参考博客</a></p>
+<p>安装hexo之前必须安装node.js和git</p>
+<p>以下将从我的环境下说明如何安装node.js和hexo</p>
+<p>我的电脑环境是centos7</p>
+<p>首先下载和安装node.js</p>
+<h6 id="第一步下载node-js"><a href="#第一步下载node-js" class="headerlink" title="第一步下载node.js"></a>第一步下载node.js</h6><p>node.js<a href="http://download.csdn.net/download/u013244517/10142740" target="_blank" rel="noopener">下载地址(我已经上传到csdn)</a></p>
+<h6 id="第二步安装node-js"><a href="#第二步安装node-js" class="headerlink" title="第二步安装node.js"></a>第二步安装node.js</h6><p>解压后使用命令　<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar --strip-components 1 -xzvf node-v* -C /usr/<span class="built_in">local</span></span><br></pre></td></tr></table></figure></p>
+<p>可直接copy到/usr/local对应文件夹下面</p>
+<p>使用以下命令如果和下面的结果相同说明已经安装好了node.js</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm -v</span><br><span class="line">5.5.1</span><br><span class="line"></span><br><span class="line">$ node -v</span><br><span class="line">v9.2.0</span><br></pre></td></tr></table></figure>
+<h5 id="安装好了node-js后就可以开始安装hexo"><a href="#安装好了node-js后就可以开始安装hexo" class="headerlink" title="安装好了node.js后就可以开始安装hexo"></a>安装好了node.js后就可以开始安装hexo</h5><h6 id="一-下载安装hexo"><a href="#一-下载安装hexo" class="headerlink" title="一.下载安装hexo"></a>一.下载安装hexo</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo</span><br><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>安装好hexo以后，在终端输入：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo</span><br></pre></td></tr></table></figure></p>
+<p>如果没有提示找不到该命令说明安装成功。</p>
+<h6 id="二-初始化hexo"><a href="#二-初始化hexo" class="headerlink" title="二.初始化hexo"></a>二.初始化hexo</h6><p>// 建立一个博客文件夹，并初始化博客，<folder>为文件夹的名称，可以随便起名字</folder></p>
+<p>$ hexo init ${文件夹}</p>
+<p>// 进入hexo博客文件夹，${文件夹}为文件夹的名称</p>
+<p>$ cd ${文件夹}</p>
+<p>// node.js的命令，根据博客既定的dependencies配置安装所有的依赖包</p>
+<p>$ npm install</p>
+<p>// 安装hexo admin界面功能</p>
+<p>$ npm install –save hexo-admin-qiniu</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init /home/lzq996298643/services/hexo</span><br><span class="line">$ <span class="built_in">cd</span> /home/lzq996298643/services/hexo</span><br><span class="line">$ npm install</span><br><span class="line">$ npm install --save hexo-admin-qiniu</span><br></pre></td></tr></table></figure>
+<p>安装完成后可以在/home/lzq996298643/services/hexo看到博客文件夹</p>
+<h6 id="三-发表一篇文章和启动hexo"><a href="#三-发表一篇文章和启动hexo" class="headerlink" title="三.发表一篇文章和启动hexo"></a>三.发表一篇文章和启动hexo</h6><h6 id="必须要在hexo初始化的文件夹下面-home-lzq996298643-services-hexo-亲测"><a href="#必须要在hexo初始化的文件夹下面-home-lzq996298643-services-hexo-亲测" class="headerlink" title="必须要在hexo初始化的文件夹下面(/home/lzq996298643/services/hexo)亲测"></a>必须要在hexo初始化的文件夹下面(/home/lzq996298643/services/hexo)亲测</h6><p>// 新建一篇文章</p>
+<p>hexo new “文章标题”</p>
+<p>//启动hexo</p>
+<p>hexo server</p>
+<p>如果看到以下输出就表明启动成功<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br><span class="line">(node:6187) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</span><br><span class="line">INFO  Start processing</span><br><span class="line">INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br></pre></td></tr></table></figure></p>
+<p><a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 或 <a href="http://localhost:4000/admin" target="_blank" rel="noopener">http://localhost:4000/admin</a> 访问</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/qincloud/hexot.git/2017/12/02/test/" data-id="cjap5k21o000149jjwvxl3ck4" class="article-share-link">Teilen</a>
+      <a data-url="https://github.com/qincloud/hexot.git/2017/12/02/test/" data-id="cjaq68gbw0001rvjl5hbznsxl" class="article-share-link">Teilen</a>
       
       
     </footer>
@@ -134,7 +161,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://github.com/qincloud/hexot.git/2017/12/02/hello-world/" data-id="cjap5k21i000049jjn28vjet8" class="article-share-link">Teilen</a>
+      <a data-url="https://github.com/qincloud/hexot.git/2017/12/02/hello-world/" data-id="cjaq68gbr0000rvjlbaz7av7x" class="article-share-link">Teilen</a>
       
       
     </footer>
