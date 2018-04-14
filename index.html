@@ -396,7 +396,7 @@
       
         
           
-          一.下面sql创建一个视图12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273
+          一.下面sql创建一个视图123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150151152153154155156157158159
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -719,8 +719,11 @@ hexo官方网站主题
           
           一.docker的安装和docker仓库使用docker的安装作者环境是centos7,建议玩docker小伙伴们也在centos7环境上,centos7必须是64位哦
 直接运行下面命令安装centos71yum install docker
-hub.docker.com的注册dockerhub的官
-          ...
+hub.docker.com的注册dockerhub的官方网址是https://hub.docker.com/
+在上面注册一个帐号就可以上传镜像了,和git提交上传代码是一样的．
+dockerhub的代码是开源的也可以自己搭建一个docker仓库,这个在以后会有专门的教程
+
+          
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/hexot/2018/01/10/docker教程/#more" rel="contents">
@@ -880,7 +883,10 @@ hub.docker.com的注册dockerhub的官
           
           安装superset本人环境centos7
 需要安装python,centos7有自带python
-一.安装python 的依赖库和pip1$ yum install libffi-devel python-devel python-pip python-wheel openssl-devel li
+一.安装python 的依赖库和pip1$ yum install libffi-devel python-devel python-pip python-wheel openssl-devel libsasl2-devel openldap-develhi
+二.Python virtualenv环境12$ pip install virtualenv	#安装virtualenv$ virtualenv venv	#进入virtualenv环境
+三.安装superset12$ pip install	#更新pip$ pip install superset	#安装superset
+四.设置superset账号和密码123456789$ fabmanager
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1045,7 +1051,11 @@ hub.docker.com的注册dockerhub的官
 我的电脑环境是centos7
 首先下载和安装node.js
 第一步下载node.jsnode.js下载地址(我已经上传到csdn)
-第二步安装node.js解压后
+第二步安装node.js解压后使用命令　1$ tar --strip-components 1 -xzvf node-v* -C /usr/local
+可直接copy到/usr/local对应文件夹下面
+使用以下命令如果和下面的结果相同说明已经安装好了node.js
+12345$ npm -v5.5.1$ node -vv9.2.0
+安装好了node.js后就可以开始安装hexo一.下载安装hexo12$ npm install -g hexo$ npm install -g hexo-c
           ...
           <!--noindex-->
           <div class="post-button text-center">
