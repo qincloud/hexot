@@ -3,14 +3,44 @@
 
 
 
-<html class="theme-next pisces" lang="zh-Hans">
+<html class="theme-next mist" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="">
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
 
-
+  
+  
+    
+    
+  <script src="/hexot/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/hexot/lib/pace/pace_theme-minimal.min.css?v=1.0.2" rel="stylesheet">
 
 
 
@@ -113,7 +143,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/hexot/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '5.1.0',
     sidebar: {"position":"left","display":"always","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
     fancybox: true,
@@ -393,27 +423,9 @@
             <div class="links-of-author motion-element">
                 
                   <span class="links-of-author-item">
-                    <a href="https://github.com/luosv" target="_blank" title="GitHub">
+                    <a href="https://github.com/qincloud" target="_blank" title="GitHub">
                       
                         <i class="fa fa-fw fa-globe"></i>GitHub</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://www.jianshu.com/u/1b1a17e2c18b" target="_blank" title="简书">
-                      
-                        <i class="fa fa-fw fa-globe"></i>简书</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://weibo.com/5394586088/profile?topnav=1&wvr=6" target="_blank" title="Weibo">
-                      
-                        <i class="fa fa-fw fa-globe"></i>Weibo</a>
-                  </span>
-                
-                  <span class="links-of-author-item">
-                    <a href="http://luosv.lofter.com/" target="_blank" title="LOFTER">
-                      
-                        <i class="fa fa-fw fa-globe"></i>LOFTER</a>
                   </span>
                 
             </div>
@@ -562,13 +574,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/hexot/js/src/affix.js?v=5.1.0"></script>
-
-  <script type="text/javascript" src="/hexot/js/src/schemes/pisces.js?v=5.1.0"></script>
-
-
 
   
   <script type="text/javascript" src="/hexot/js/src/scrollspy.js?v=5.1.0"></script>
