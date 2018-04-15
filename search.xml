@@ -3,7 +3,10 @@
   <entry>
     <title><![CDATA[elasticsearch初级教程]]></title>
     <url>%2Fhexot%2F2018%2F04%2F14%2Felasticsearch%E5%88%9D%E7%BA%A7%E6%95%99%E7%A8%8B%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[1.安装elasticsearch先去elasticsearch官方网站下载elasticsearch 由于本人平台是centos7,所以本人选择了tar包 下载完成后解压到/usr/local/下 然后进入elasticsearch/config文件夹下修改elasticsearch.yml文件 12345network.host: 192.168.2.215 #配置ip地址http.port: 9200 #配置端口号discovery.zen.ping.unicast.hosts: ["192.168.2.215"] #配置ip地址 配置完成后创建一个es用户 12345678910$ useradd es#创建用户完成后切换到root用户打开/etc/security/limits.conf文件$ gedit /etc/security/limits.conf添加以下两行es hard nofile 65536es soft nofile 65536 然后进入elasticsearch/bin文件夹下切换到es用户启动elasticsearch 1$ ./elasticsearch 然后访问elasticsearch.yml文件里配置的ip地址+端口看到一串json字符串就表示启动成功了,如下 123456789101112131415&#123; &quot;name&quot; : &quot;e17kn5H&quot;, &quot;cluster_name&quot; : &quot;elasticsearch&quot;, &quot;cluster_uuid&quot; : &quot;q1W9ZuXySmag-mmqbAjYYw&quot;, &quot;version&quot; : &#123; &quot;number&quot; : &quot;6.2.3&quot;, &quot;build_hash&quot; : &quot;c59ff00&quot;, &quot;build_date&quot; : &quot;2018-03-13T10:06:29.741383Z&quot;, &quot;build_snapshot&quot; : false, &quot;lucene_version&quot; : &quot;7.2.1&quot;, &quot;minimum_wire_compatibility_version&quot; : &quot;5.6.0&quot;, &quot;minimum_index_compatibility_version&quot; : &quot;5.0.0&quot; &#125;, &quot;tagline&quot; : &quot;You Know, for Search&quot;&#125; 2.curl命令操作elasticsearch2.1 创建和删除Index2.1.1 创建一个weather Index12[lzq996298643@localhost ~]$ curl -X PUT '192.168.2.215:9200/qincloud'&#123;"acknowledged":true,"shards_acknowledged":true,"index":"qincloud"&#125; 2.1.2 删除weather index1curl -X DELETE '192.168.2.215:9200/qincloud' 2.2 中文分词器12]]></content>
+      <categories>
+        <category>elasticsearch</category>
+      </categories>
   </entry>
   <entry>
     <title><![CDATA[pivot与unpivot使用示例]]></title>
