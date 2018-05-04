@@ -125,17 +125,17 @@
 
 
 
-<meta name="description" content="博客是技术另一种表现方式.">
+<meta name="description" content="1.安装elasticsearch先去elasticsearch官方网站下载elasticsearch 由于本人平台是centos7,所以本人选择了tar包 下载完成后解压到/usr/local/下 然后进入elasticsearch/config文件夹下修改elasticsearch.yml文件 12345netwo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="elasticsearch初级教程">
 <meta property="og:url" content="http://qincloud.github.io/hexot/2018/04/14/elasticsearch初级教程/index.html">
 <meta property="og:site_name" content="廖振钦的博客">
-<meta property="og:description" content="博客是技术另一种表现方式.">
+<meta property="og:description" content="1.安装elasticsearch先去elasticsearch官方网站下载elasticsearch 由于本人平台是centos7,所以本人选择了tar包 下载完成后解压到/usr/local/下 然后进入elasticsearch/config文件夹下修改elasticsearch.yml文件 12345network.host: 192.168.2.215   #配置ip地址http.por">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-14T02:57:35.608Z">
+<meta property="og:updated_time" content="2018-04-14T13:55:46.636Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elasticsearch初级教程">
-<meta name="twitter:description" content="博客是技术另一种表现方式.">
+<meta name="twitter:description" content="1.安装elasticsearch先去elasticsearch官方网站下载elasticsearch 由于本人平台是centos7,所以本人选择了tar包 下载完成后解压到/usr/local/下 然后进入elasticsearch/config文件夹下修改elasticsearch.yml文件 12345network.host: 192.168.2.215   #配置ip地址http.por">
 
 
 
@@ -362,6 +362,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexot/categories/elasticsearch/" itemprop="url" rel="index">
+                    <span itemprop="name">elasticsearch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -400,7 +422,20 @@
       
 
       
-        
+        <h3 id="1-安装elasticsearch"><a href="#1-安装elasticsearch" class="headerlink" title="1.安装elasticsearch"></a>1.安装elasticsearch</h3><p>先去elasticsearch<a href="https://www.elastic.co/downloads/elasticsearch" target="_blank" rel="noopener">官方网站</a>下载elasticsearch</p>
+<p>由于本人平台是centos7,所以本人选择了tar包</p>
+<p>下载完成后解压到/usr/local/下</p>
+<p>然后进入elasticsearch/config文件夹下修改elasticsearch.yml文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">network.host: 192.168.2.215   <span class="comment">#配置ip地址</span></span><br><span class="line"></span><br><span class="line">http.port: 9200 <span class="comment">#配置端口号</span></span><br><span class="line"></span><br><span class="line">discovery.zen.ping.unicast.hosts: [<span class="string">"192.168.2.215"</span>] <span class="comment">#配置ip地址</span></span><br></pre></td></tr></table></figure>
+<p>配置完成后创建一个es用户</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ useradd es</span><br><span class="line"></span><br><span class="line">#创建用户完成后切换到root用户打开/etc/security/limits.conf文件</span><br><span class="line"></span><br><span class="line">$ gedit /etc/security/limits.conf</span><br><span class="line"></span><br><span class="line">添加以下两行</span><br><span class="line"></span><br><span class="line">es hard nofile 65536</span><br><span class="line">es soft  nofile 65536</span><br></pre></td></tr></table></figure>
+<p>然后进入elasticsearch/bin文件夹下切换到es用户启动elasticsearch</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./elasticsearch</span><br></pre></td></tr></table></figure>
+<p>然后访问elasticsearch.yml文件里配置的ip地址+端口看到一串json字符串就表示启动成功了,如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;name&quot; : &quot;e17kn5H&quot;,</span><br><span class="line">  &quot;cluster_name&quot; : &quot;elasticsearch&quot;,</span><br><span class="line">  &quot;cluster_uuid&quot; : &quot;q1W9ZuXySmag-mmqbAjYYw&quot;,</span><br><span class="line">  &quot;version&quot; : &#123;</span><br><span class="line">    &quot;number&quot; : &quot;6.2.3&quot;,</span><br><span class="line">    &quot;build_hash&quot; : &quot;c59ff00&quot;,</span><br><span class="line">    &quot;build_date&quot; : &quot;2018-03-13T10:06:29.741383Z&quot;,</span><br><span class="line">    &quot;build_snapshot&quot; : false,</span><br><span class="line">    &quot;lucene_version&quot; : &quot;7.2.1&quot;,</span><br><span class="line">    &quot;minimum_wire_compatibility_version&quot; : &quot;5.6.0&quot;,</span><br><span class="line">    &quot;minimum_index_compatibility_version&quot; : &quot;5.0.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-curl命令操作elasticsearch"><a href="#2-curl命令操作elasticsearch" class="headerlink" title="2.curl命令操作elasticsearch"></a>2.curl命令操作elasticsearch</h3><h4 id="2-1-创建和删除Index"><a href="#2-1-创建和删除Index" class="headerlink" title="2.1 创建和删除Index"></a>2.1 创建和删除Index</h4><h5 id="2-1-1-创建一个weather-Index"><a href="#2-1-1-创建一个weather-Index" class="headerlink" title="2.1.1 创建一个weather Index"></a>2.1.1 创建一个weather Index</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[lzq996298643@localhost ~]$ curl -X PUT <span class="string">'192.168.2.215:9200/qincloud'</span></span><br><span class="line">&#123;<span class="string">"acknowledged"</span>:<span class="literal">true</span>,<span class="string">"shards_acknowledged"</span>:<span class="literal">true</span>,<span class="string">"index"</span>:<span class="string">"qincloud"</span>&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-1-2-删除weather-index"><a href="#2-1-2-删除weather-index" class="headerlink" title="2.1.2 删除weather index"></a>2.1.2 删除weather index</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X DELETE <span class="string">'192.168.2.215:9200/qincloud'</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-中文分词器"><a href="#2-2-中文分词器" class="headerlink" title="2.2 中文分词器"></a>2.2 中文分词器</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -484,8 +519,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -515,7 +559,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/hexot/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -550,6 +594,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-安装elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">1.安装elasticsearch</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-curl命令操作elasticsearch"><span class="nav-number">2.</span> <span class="nav-text">2.curl命令操作elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-创建和删除Index"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 创建和删除Index</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-1-创建一个weather-Index"><span class="nav-number">2.1.1.</span> <span class="nav-text">2.1.1 创建一个weather Index</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-2-删除weather-index"><span class="nav-number">2.1.2.</span> <span class="nav-text">2.1.2 删除weather index</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-中文分词器"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 中文分词器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
