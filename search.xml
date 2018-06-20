@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[hbase教程]]></title>
+    <url>%2Fhexot%2F2018%2F06%2F20%2Fhbase%E6%95%99%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[hbase官方网站 hbase下载地址 博主使用的是hbase-2.0.0 安装hbase前需要先行安装hadoop 把包放到/usr/local下并解压12[root@master ~]# cp hbase-2.0.0-bin.tar.gz /usr/local[root@master ~]# tar zxvf hbase-2.0.0-bin.tar.gz 解压完毕后需要修改两个地方的配置 conf文件夹下配置hbase-site.xml 12345678910&lt;configuration&gt; &lt;property&gt; &lt;name&gt;hbase.rootdir&lt;/name&gt; &lt;value&gt;hdfs://master:9000/hbase&lt;/value&gt; &lt;!-- 需要和hadoop的hdfs配置一致 --&gt; &lt;/property&gt; &lt;property&gt; &lt;name&gt;hbase.cluster.distributed&lt;/name&gt; &lt;value&gt;true&lt;/value&gt; &lt;/property&gt;&lt;/configuration&gt; conf文件夹下配置hbase-env.sh 添加如下配置 123export JAVA_HOME=/usr/local/jdk1.8export HBASE_CLASSPATH=/usr/local/hbase-2.0.0/conf export HBASE_MANAGES_ZK=true #是否启动自带的zookeeper 配置完成后到bin目录下启动hbase 1234567891011121314[root@master bin]# ./start-hbase.sh[root@master ~]# jps21616 DataNode21873 SecondaryNameNode3890 Jps31667 HMaster21460 NameNode22212 NodeManager24324 Worker24181 Master31591 HQuorumPeer1305 Main22060 ResourceManager31758 HRegionServer 启动后有HRegionServer,HQuorumPeer,HMaster这三个进程 然后访问http://localhost:16010 如果有东西就表示完成了. 停止hbase&amp;进入hbase shell&amp;查看hdfs下的hbase1234567891011121314151617[root@master bin]# ./stop-hbase.sh[root@master bin]# hbase shell[root@master ~]# hadoop fs -ls /hbase18/06/20 21:34:37 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicableFound 12 itemsdrwxr-xr-x - root supergroup 0 2018-06-20 20:43 /hbase/.hbckdrwxr-xr-x - root supergroup 0 2018-06-20 20:44 /hbase/.tmpdrwxr-xr-x - root supergroup 0 2018-06-20 20:59 /hbase/MasterProcWALsdrwxr-xr-x - root supergroup 0 2018-06-20 20:44 /hbase/WALsdrwxr-xr-x - root supergroup 0 2018-06-20 20:43 /hbase/archivedrwxr-xr-x - root supergroup 0 2018-06-20 20:43 /hbase/corruptdrwxr-xr-x - root supergroup 0 2018-06-20 20:44 /hbase/data-rw-r--r-- 3 root supergroup 42 2018-06-20 20:43 /hbase/hbase.id-rw-r--r-- 3 root supergroup 7 2018-06-20 20:43 /hbase/hbase.versiondrwxr-xr-x - root supergroup 0 2018-06-20 20:43 /hbase/mobdirdrwxr-xr-x - root supergroup 0 2018-06-20 20:59 /hbase/oldWALsdrwx--x--x - root supergroup 0 2018-06-20 20:43 /hbase/staging]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[从paxos到zookeeper分布式一致性原理与实践(笔记,重点,读后感)]]></title>
     <url>%2Fhexot%2F2018%2F06%2F08%2F%E4%BB%8Epaxos%E5%88%B0zookeeper%E5%88%86%E5%B8%83%E5%BC%8F%E4%B8%80%E8%87%B4%E6%80%A7%E5%8E%9F%E7%90%86%E4%B8%8E%E5%AE%9E%E8%B7%B5-%E7%AC%94%E8%AE%B0-%E9%87%8D%E7%82%B9-%E8%AF%BB%E5%90%8E%E6%84%9F%2F</url>
     <content type="text"><![CDATA[本书一共有８个章节 第一章: 分布式架构 1~15页 第二章: 一致性协议 17~37页 第三章: Paxos的工程实践 39~58页 第四章: ZooKeeper与Paxos 59～78页 第五章: 使用ZooKeeper 79~162页 第六章: ZooKeeper的典型应用场景 163~242页 第七章: ZooKeeper的技术内幕 243页~376页 第八章: Zookeeper运维379~405页 第一章分布式架构1.集中式的特点:又一台或多台计算机组成的中心节点。 2.分布式的特点:分布式系统是一个硬件或软件组件分布在不同的网络计算机上,彼此之间仅仅通过消息传递进行通信和协调的系统。 3.事物具有4个特征:原子性,一致性,隔离性,持久性,简称事物的ACID特性。 4.分布式事物 5.CAP定理:一个分布式系统不可能同时满足一致性,可用性,分区容错性最多只能满足其中两项 6.BASE理论:]]></content>
@@ -29,7 +34,7 @@
   <entry>
     <title><![CDATA[kylin实战(一)]]></title>
     <url>%2Fhexot%2F2018%2F05%2F07%2Fkylin%E5%AE%9E%E6%88%98-%E4%B8%80%2F</url>
-    <content type="text"><![CDATA[配置kylin环境前请现确保hadoop,hbase,hive,zookeeper等环境的配置 以上工具环境配置在这里不做讲解]]></content>
+    <content type="text"><![CDATA[配置kylin环境前请现确保hadoop,hbase,hive,zookeeper等环境的配置]]></content>
   </entry>
   <entry>
     <title><![CDATA[kafka java调用]]></title>
