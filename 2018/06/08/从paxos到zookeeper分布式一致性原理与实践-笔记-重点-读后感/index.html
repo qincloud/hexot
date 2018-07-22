@@ -132,7 +132,7 @@
 <meta property="og:site_name" content="廖振钦的博客">
 <meta property="og:description" content="本书一共有８个章节 第一章:   分布式架构 1~15页 第二章:   一致性协议 17~37页 第三章:   Paxos的工程实践 39~58页 第四章:   ZooKeeper与Paxos 59～78页 第五章:   使用ZooKeeper 79~162页 第六章:   ZooKeeper的典型应用场景 163~242页 第七章:  ZooKeeper的技术内幕 243页~376页 第八章:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-08T10:04:18.829Z">
+<meta property="og:updated_time" content="2018-07-13T08:25:11.408Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从paxos到zookeeper分布式一致性原理与实践(笔记,重点,读后感)">
 <meta name="twitter:description" content="本书一共有８个章节 第一章:   分布式架构 1~15页 第二章:   一致性协议 17~37页 第三章:   Paxos的工程实践 39~58页 第四章:   ZooKeeper与Paxos 59～78页 第五章:   使用ZooKeeper 79~162页 第六章:   ZooKeeper的典型应用场景 163~242页 第七章:  ZooKeeper的技术内幕 243页~376页 第八章:">
@@ -372,6 +372,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/hexot/categories/分布式/" itemprop="url" rel="index">
+                    <span itemprop="name">分布式</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -425,6 +447,12 @@
 <p>4.分布式事物</p>
 <p>5.CAP定理:一个分布式系统不可能同时满足一致性,可用性,分区容错性最多只能满足其中两项</p>
 <p>6.BASE理论:</p>
+<h3 id="第二章一致性协议"><a href="#第二章一致性协议" class="headerlink" title="第二章一致性协议"></a>第二章一致性协议</h3><p>1.2PC,即Two phase commit 的缩写二阶段提交,阶段一:提交事物请求.  阶段二:执行事物提交</p>
+<p>2.3PC,即Three phase commit的缩写就是三阶段提交,它把2PC的提交事物请求拆分为CanCommit,PreCommit,doCommit.</p>
+<p>3.PAXOS是一种提高分布式系统容错性的一致性的算法</p>
+<h3 id="第三章Paxos的工程实践"><a href="#第三章Paxos的工程实践" class="headerlink" title="第三章Paxos的工程实践"></a>第三章Paxos的工程实践</h3><h3 id="第四张Zookeeper与Paxos"><a href="#第四张Zookeeper与Paxos" class="headerlink" title="第四张Zookeeper与Paxos"></a>第四张Zookeeper与Paxos</h3><p>1.Zookeeper是一个开源的分布式解决方案是一个典型的分布式数据一致性解决方案.</p>
+<p>2.ZAB(Zookeeper Atomic broadcast)协议是专门为Zookeeper设计的一种支持崩溃恢复的原子广播协议</p>
+<p>3.ZAB协议包括两种基本的模式,分别是崩溃的恢复和消息的广播</p>
 
       
     </div>
@@ -560,7 +588,7 @@
               
                 <a href="/hexot/archives">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -571,7 +599,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/hexot/categories/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -616,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章分布式架构"><span class="nav-number">1.</span> <span class="nav-text">第一章分布式架构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章分布式架构"><span class="nav-number">1.</span> <span class="nav-text">第一章分布式架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二章一致性协议"><span class="nav-number">2.</span> <span class="nav-text">第二章一致性协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章Paxos的工程实践"><span class="nav-number">3.</span> <span class="nav-text">第三章Paxos的工程实践</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四张Zookeeper与Paxos"><span class="nav-number">4.</span> <span class="nav-text">第四张Zookeeper与Paxos</span></a></li></ol></div>
             
 
           </div>

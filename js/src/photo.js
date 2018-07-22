@@ -1,4 +1,4 @@
-define([], function () {
+define(['require'], function () {
   return {
     page: 1,
     offset: 20,
