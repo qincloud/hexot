@@ -125,19 +125,21 @@
 
 
 
-<meta name="description" content="nutch是java开发的分布式爬虫网络框架,著名的大数据框架hadoop就是的子项目. nutch就是用来爬去数据的没有数据怎么做大数据呢. 首先从nutch官网将源代码下载下来 博主下载的官网最新的版本apache-nutch-2.3.1-src.tar.gz 下载完成后需要把代码导入eclipse,因为nutch">
+<meta name="description" content="注:博主是在centos7上面进行编译的. 1.jdk代码管理openjdk源代码官网各个版本的jdk源代码在上面都有 openjdk源代码是用一个叫mercurial(轻量级分布式版本控制系统)的工具来管理源代码的 首先下载安装mercurial的源代码下载完成后解压下来进入源代码文件夹 12[root@localh">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nutch代码研究">
-<meta property="og:url" content="http://qincloud.github.io/hexot/2018/07/13/nutch代码研究/index.html">
+<meta property="og:title" content="深入抛析JDK(编译JDK,阅读构建JDK代码)">
+<meta property="og:url" content="http://qincloud.github.io/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/index.html">
 <meta property="og:site_name" content="廖振钦的博客">
-<meta property="og:description" content="nutch是java开发的分布式爬虫网络框架,著名的大数据框架hadoop就是的子项目. nutch就是用来爬去数据的没有数据怎么做大数据呢. 首先从nutch官网将源代码下载下来 博主下载的官网最新的版本apache-nutch-2.3.1-src.tar.gz 下载完成后需要把代码导入eclipse,因为nutch是使用ant做的源代码管理的项目,所以eclipse需要安装ivyIDE插件 打">
+<meta property="og:description" content="注:博主是在centos7上面进行编译的. 1.jdk代码管理openjdk源代码官网各个版本的jdk源代码在上面都有 openjdk源代码是用一个叫mercurial(轻量级分布式版本控制系统)的工具来管理源代码的 首先下载安装mercurial的源代码下载完成后解压下来进入源代码文件夹 12[root@localhost opnesource]# tar -zxvf mercurial-4.6">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180713/2018-07-13%2015-16-25%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-07-15T09:15:01.519Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180805/2018-08-05%2011-36-42%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180805/2018-08-05%2011-37-55%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180805/2018-08-05%2011-38-32%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-08-05T03:47:31.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nutch代码研究">
-<meta name="twitter:description" content="nutch是java开发的分布式爬虫网络框架,著名的大数据框架hadoop就是的子项目. nutch就是用来爬去数据的没有数据怎么做大数据呢. 首先从nutch官网将源代码下载下来 博主下载的官网最新的版本apache-nutch-2.3.1-src.tar.gz 下载完成后需要把代码导入eclipse,因为nutch是使用ant做的源代码管理的项目,所以eclipse需要安装ivyIDE插件 打">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180713/2018-07-13%2015-16-25%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta name="twitter:title" content="深入抛析JDK(编译JDK,阅读构建JDK代码)">
+<meta name="twitter:description" content="注:博主是在centos7上面进行编译的. 1.jdk代码管理openjdk源代码官网各个版本的jdk源代码在上面都有 openjdk源代码是用一个叫mercurial(轻量级分布式版本控制系统)的工具来管理源代码的 首先下载安装mercurial的源代码下载完成后解压下来进入源代码文件夹 12[root@localhost opnesource]# tar -zxvf mercurial-4.6">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180805/2018-08-05%2011-36-42%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
 
 
 
@@ -167,13 +169,13 @@
 
 
 
-  <link rel="canonical" href="http://qincloud.github.io/hexot/2018/07/13/nutch代码研究/"/>
+  <link rel="canonical" href="http://qincloud.github.io/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/"/>
 
 
 
 
 
-  <title>nutch代码研究 | 廖振钦的博客</title>
+  <title>深入抛析JDK(编译JDK,阅读构建JDK代码) | 廖振钦的博客</title>
   
 
 
@@ -334,7 +336,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://qincloud.github.io/hexot/hexot/2018/07/13/nutch代码研究/">
+    <link itemprop="mainEntityOfPage" href="http://qincloud.github.io/hexot/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="廖振钦">
@@ -351,7 +353,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">nutch代码研究</h1>
+          <h1 class="post-title" itemprop="name headline">深入抛析JDK(编译JDK,阅读构建JDK代码)</h1>
         
 
         <div class="post-meta">
@@ -363,8 +365,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-13T14:55:07+08:00">
-                2018-07-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-04T09:09:11+08:00">
+                2018-08-04
               </time>
             
 
@@ -374,28 +376,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/hexot/categories/大数据/" itemprop="url" rel="index">
-                    <span itemprop="name">大数据</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -403,7 +383,7 @@
 
           
           
-             <span id="/hexot/2018/07/13/nutch代码研究/" class="leancloud_visitors" data-flag-title="nutch代码研究">
+             <span id="/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/" class="leancloud_visitors" data-flag-title="深入抛析JDK(编译JDK,阅读构建JDK代码)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -434,27 +414,45 @@
       
 
       
-        <p>nutch是java开发的分布式爬虫网络框架,著名的大数据框架hadoop就是的子项目.</p>
-<p>nutch就是用来爬去数据的没有数据怎么做大数据呢.</p>
-<p>首先从<a href="http://nutch.apache.org/" target="_blank" rel="noopener">nutch官网</a>将源代码下载下来</p>
-<p>博主下载的官网最新的版本<a href="http://mirrors.shu.edu.cn/apache/nutch/2.3.1/apache-nutch-2.3.1-src.tar.gz" target="_blank" rel="noopener">apache-nutch-2.3.1-src.tar.gz</a></p>
-<p>下载完成后需要把代码导入eclipse,因为nutch是使用ant做的源代码管理的项目,所以eclipse需要安装ivyIDE插件</p>
-<p>打开下面菜单 Help -&gt; Install New Software</p>
-<p>添加url: <a href="http://www.apache.org/dist/ant/ivyde/updatesite/" target="_blank" rel="noopener">http://www.apache.org/dist/ant/ivyde/updatesite/</a></p>
-<p><img src="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180713/2018-07-13%2015-16-25%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="image"></p>
-<p>然后一步步安装</p>
-<p>然后在安装svn插件</p>
-<p>添加url: <a href="http://subclipse.tigris.org/update_1.8.x" target="_blank" rel="noopener">http://subclipse.tigris.org/update_1.8.x</a> 和上面一样一步步安装</p>
-<p>然后可以从SVN导入nutch的源代码,也可以直接将源代码导入eclipse.</p>
-<p>下面将介绍SVN导入eclipse源代码</p>
-<p>打开eclipse菜单</p>
-<p>File -&gt; New -&gt; Project -&gt; SVN -&gt; 从SVN检出项目<br>然后输入SVN URL: <a href="https://svn.apache.org/repos/asf/nutch/tags/release-2.3.1/" target="_blank" rel="noopener">https://svn.apache.org/repos/asf/nutch/tags/release-2.3.1/</a> </p>
-<p>release-2.3.1是代码的版本号,你下载的代码是什么版本就写上多少号</p>
-<p>因为是ant构建的项目所以你还需要在你的电脑上面安装ant的工具包</p>
-<p>需要把ivy-2.3.0.jar文件copy到ant目录下lib包里面</p>
-<p>ivy-2.3.0.jar必须要放到ant的lib的下不然依赖问题不能解决,在项目下输入ant就没有用</p>
-<p>然后在nutch目录下输入ant命令下载依赖文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[lzq996298643@localhost apache-nutch-2.3.1]$ ant</span><br><span class="line">Buildfile: /home/lzq996298643/development_space/javaEE2018/nutch/apache-nutch-2.3.1/build.xml</span><br></pre></td></tr></table></figure>
+        <p>注:博主是在centos7上面进行编译的.</p>
+<h4 id="1-jdk代码管理"><a href="#1-jdk代码管理" class="headerlink" title="1.jdk代码管理"></a>1.jdk代码管理</h4><p><a href="http://hg.openjdk.java.net/" target="_blank" rel="noopener">openjdk源代码官网</a>各个版本的jdk源代码在上面都有</p>
+<p>openjdk源代码是用一个叫mercurial(轻量级分布式版本控制系统)的工具来管理源代码的</p>
+<p>首先下载安装<a href="https://mercurial.selenic.com/release/" target="_blank" rel="noopener">mercurial的源代码</a>下载完成后解压下来进入源代码文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost opnesource]<span class="comment"># tar -zxvf mercurial-4.6.tar.gz</span></span><br><span class="line">[root@localhost opnesource]<span class="comment"># cd mercurial-4.6</span></span><br></pre></td></tr></table></figure>
+<p>打开Ｍakefile文件找到export PREFIX=/usr/local可以指定安装目录修改完成后输入make install命令开始安装.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mercurial-4.6]<span class="comment"># make install</span></span><br></pre></td></tr></table></figure>
+<p>安装完成后输入hg version有以下信息就表示可以了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost opensource]<span class="comment"># hg version</span></span><br><span class="line">分布式软件配置管理工具 - 水银 (版本 4.6)</span><br><span class="line">(see https://mercurial-scm.org <span class="keyword">for</span> more information)</span><br><span class="line"></span><br><span class="line">Copyright (C) 2005-2018 Matt Mackall and others</span><br><span class="line">This is free software; see the <span class="built_in">source</span> <span class="keyword">for</span> copying conditions. There is NO</span><br><span class="line">warranty; not even <span class="keyword">for</span> MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.</span><br><span class="line">[root@localhost jdk7u-dev]<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>然后用命令将openjdk源代码clone下来</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost jdk]<span class="comment"># hg clone http://hg.openjdk.java.net/jdk7u/jdk7u-dev</span></span><br><span class="line">[root@localhost jdk]<span class="comment"># cd dk7u-dev                                    #进入代码文件夹</span></span><br><span class="line">[root@localhost dk7u-dev]<span class="comment"># chmod 755 get_source.sh    #进入代码文件夹授权get_source.sh文件</span></span><br><span class="line">[root@localhost jdk7u-dev]<span class="comment"># ./get_source.sh</span></span><br><span class="line"><span class="comment"># Repos:  jaxp jaxws jdk hotspot </span></span><br><span class="line">Starting on jaxp</span><br><span class="line">Starting on jaxws</span><br><span class="line">Starting on jdk</span><br><span class="line">Starting on hotspot</span><br><span class="line"><span class="comment"># hg clone http://hg.openjdk.java.net/jdk7u/jdk7u-dev/hotspot hotspot</span></span><br><span class="line">正在请求全部修改</span><br><span class="line">正在增加修改集</span><br><span class="line">正在增加清单</span><br><span class="line">事务中止!</span><br><span class="line">完成回滚</span><br><span class="line">中止: stream ended unexpectedly (got 10152 bytes, expected 19512)</span><br><span class="line"><span class="comment"># exit code 255</span></span><br><span class="line"><span class="comment"># hg clone http://hg.openjdk.java.net/jdk7u/jdk7u-dev/jaxp jaxp</span></span><br><span class="line">正在请求全部修改</span><br><span class="line">正在增加修改集</span><br><span class="line">正在增加清单</span><br><span class="line">正在增加文件改变</span><br><span class="line">已增加 1138 个修改集，包含 5685 个改变，修改了 4097 个文件</span><br><span class="line">new changesets 6ce5f4757bde:9af3447d957e</span><br><span class="line">updating to branch default</span><br><span class="line">2078 files updated, 0 files merged, 0 files removed, 0 files unresolved</span><br><span class="line"><span class="comment"># exit code 0</span></span><br><span class="line"><span class="comment"># hg clone http://hg.openjdk.java.net/jdk7u/jdk7u-dev/jaxws jaxws</span></span><br><span class="line">正在请求全部修改</span><br><span class="line">正在增加修改集</span><br><span class="line">正在增加清单</span><br><span class="line">正在增加文件改变</span><br><span class="line">事务中止!</span><br><span class="line">完成回滚</span><br><span class="line">中止: stream ended unexpectedly (got 14 bytes, expected 80)</span><br><span class="line"><span class="comment"># exit code 255</span></span><br><span class="line"><span class="comment"># hg clone http://hg.openjdk.java.net/jdk7u/jdk7u-dev/jdk jdk</span></span><br><span class="line">正在请求全部修改</span><br><span class="line">正在增加修改集</span><br><span class="line">正在增加清单</span><br><span class="line">正在增加文件改变</span><br><span class="line">已增加 7885 个修改集，包含 66961 个改变，修改了 22185 个文件</span><br><span class="line">new changesets 37a05a11f281:70e3553d9d6e</span><br><span class="line">updating to branch default</span><br><span class="line">20846 files updated, 0 files merged, 0 files removed, 0 files unresolved</span><br><span class="line"><span class="comment"># exit code 0</span></span><br><span class="line"><span class="comment"># Repos:  ./corba . ./hotspot ./jaxp ./jdk ./langtools </span></span><br><span class="line">Starting on ./corba</span><br><span class="line">Starting on .</span><br><span class="line">Starting on ./hotspot</span><br><span class="line">Starting on ./jaxp</span><br><span class="line">Starting on ./jdk</span><br><span class="line">Starting on ./langtools</span><br><span class="line"><span class="comment"># cd ./corba &amp;&amp; hg pull -u</span></span><br><span class="line">正在拉自 http://hg.openjdk.java.net/jdk7u/jdk7u-dev/corba</span><br><span class="line">正在搜索修改</span><br><span class="line">没有发现修改</span><br><span class="line"><span class="comment"># exit code 0</span></span><br><span class="line"><span class="comment"># cd ./hotspot &amp;&amp; hg pull -u</span></span><br><span class="line">正在拉自 http://hg.openjdk.java.net/jdk7u/jdk7u-dev/hotspot</span><br><span class="line">正在搜索修改</span><br><span class="line">没有发现修改</span><br><span class="line"><span class="comment"># exit code 0</span></span><br><span class="line"><span class="comment"># cd ./jaxp &amp;&amp; hg pull -u</span></span><br><span class="line">正在拉自 http://hg.openjdk.java.net/jdk7u/jdk7u-dev/jaxp</span><br><span class="line">正在搜索修改</span><br><span class="line">没有发现修改</span><br><span class="line"><span class="comment"># exit code 0</span></span><br><span class="line"><span class="comment"># cd . &amp;&amp; hg pull -u</span></span><br><span class="line">正在拉自 http://hg.openjdk.java.net/jdk7u/jdk7u-dev</span><br><span class="line">正在搜索修改</span><br><span class="line">没有发现修改</span><br><span class="line"><span class="comment"># exit code 0</span></span><br><span class="line"><span class="comment"># cd ./langtools &amp;&amp; hg pull -u</span></span><br><span class="line">正在拉自 http://hg.openjdk.java.net/jdk7u/jdk7u-dev/langtools</span><br><span class="line">正在搜索修改</span><br><span class="line">没有发现修改</span><br><span class="line"><span class="comment"># exit code 0</span></span><br><span class="line"><span class="comment"># cd ./jdk &amp;&amp; hg pull -u</span></span><br><span class="line">正在拉自 http://hg.openjdk.java.net/jdk7u/jdk7u-dev/jdk</span><br><span class="line">正在搜索修改</span><br><span class="line">没有发现修改</span><br><span class="line"><span class="comment"># exit code 0</span></span><br></pre></td></tr></table></figure>
+<p>如果发现有exit code 255应该是下载失败了,需要从新clone</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost jdk7u-dev]<span class="comment"># hg clone http://hg.openjdk.java.net/jdk7u/jdk7u-dev/hotspot </span></span><br><span class="line">[root@localhost jdk7u-dev]<span class="comment"># hg clone http://hg.openjdk.java.net/jdk7u/jdk7u-dev/jaxws</span></span><br></pre></td></tr></table></figure>
+<p>代码确认下载完成后就可以开始编译了.</p>
+<h4 id="2-开始编译jdk代码"><a href="#2-开始编译jdk代码" class="headerlink" title="2.开始编译jdk代码"></a>2.开始编译jdk代码</h4><h5 id="2-1-设置编译环境变量"><a href="#2-1-设置编译环境变量" class="headerlink" title="2.1 设置编译环境变量"></a>2.1 设置编译环境变量</h5><p>执行下面的命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LANG=C</span><br><span class="line"><span class="built_in">export</span> ALT_BOOTDIR=/usr/<span class="built_in">local</span>/jdk1.7/            <span class="comment">#设置jdk</span></span><br><span class="line"><span class="built_in">export</span> ALLOW_DOWNLOADS=<span class="literal">true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> HOTSPOT_BUILD_JOBS=6</span><br><span class="line"><span class="built_in">export</span> ALT_PATALLER_COMPILE_JOBS=6</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> SKIP_COMPARE_IMAGES=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> USE_PRECOMPILED_HEADER=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> BUILD_LANGTOOLS=<span class="literal">true</span></span><br><span class="line"><span class="built_in">export</span> BUILD_HOTSPOT=<span class="literal">true</span>            <span class="comment">#设置是否编译HOTSPOT模块</span></span><br><span class="line"><span class="built_in">export</span> BUILD_JDK=<span class="literal">true</span>             <span class="comment">#设置是否编译JDK模块</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> BUILD_JAXP=<span class="literal">true</span>            <span class="comment">#设置是否编译JAXP模块 </span></span><br><span class="line"><span class="built_in">export</span> BUILD_JAXWS=<span class="literal">true</span>        <span class="comment">#设置是否编译JAXWS模块</span></span><br><span class="line"><span class="built_in">export</span> BUILD_CORBA=<span class="literal">true</span>       <span class="comment">#设置是否编译CORBA模块</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#export SKIP_DEBUG_BUILD=false</span></span><br><span class="line"><span class="comment">#export SKIP_FASTDEBUG_BUILD=true</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BUILD_DEPLOY=<span class="literal">false</span></span><br><span class="line">BUILD_INSTALL=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> ALT_OUTPUTDIR=/root/temp/jdk7u 　　　　　　　<span class="comment">#输出的位置　</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#export CORBA_DIST=$ALT_OUTPUTDIR/corba/dist</span></span><br><span class="line"><span class="comment">#export JAXP_DIST=$ALT_OUTPUTDIR/jaxp/dist</span></span><br><span class="line"><span class="comment">#export JAXWS_DIST=$ALT_OUTPUTDIR/jaxws/dist</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">unset</span> JAVA_HOME        <span class="comment">#卸载JAVA_HOME</span></span><br><span class="line"><span class="built_in">unset</span> CLASSPATH        <span class="comment">#卸载CLASSPATH</span></span><br><span class="line"><span class="built_in">unset</span> JAVA_OPTS</span><br></pre></td></tr></table></figure></p>
+<h5 id="2-2依赖环境安装"><a href="#2-2依赖环境安装" class="headerlink" title="2.2依赖环境安装"></a>2.2依赖环境安装</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost jdk7u-dev]<span class="comment"># yum install -y ant ant-nodeps       #如果电脑上有ant可以跳过这一步</span></span><br><span class="line">[root@localhost jdk7u-dev]<span class="comment"># yum install -y libX11* libX*</span></span><br><span class="line">[root@localhost jdk7u-dev]<span class="comment"># yum install -y libXi-devel libXtst-devel libXt-devel freetype* </span></span><br><span class="line">[root@localhost jdk7u-dev]<span class="comment"># yum install -y alsa-lib-devel cups-devel</span></span><br></pre></td></tr></table></figure>
+<p>如果不安装这些依赖可能会报错.</p>
+<h5 id="2-3开始编译"><a href="#2-3开始编译" class="headerlink" title="2.3开始编译"></a>2.3开始编译</h5><p>上面的命令执行成功后就可以使用make命令开始编译了.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost jdk7u-dev]<span class="comment"># make</span></span><br></pre></td></tr></table></figure></p>
+<p>执行make报了下面这个错误</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Exception in thread &quot;main&quot; java.lang.UnsupportedClassVersionError: org/apache/tools/ant/launch/Launcher : Unsupported major.minor version 52.0</span><br><span class="line">	at java.lang.ClassLoader.defineClass1(Native Method)</span><br><span class="line">	at java.lang.ClassLoader.defineClass(ClassLoader.java:800)</span><br><span class="line">	at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142)</span><br><span class="line">	at java.net.URLClassLoader.defineClass(URLClassLoader.java:449)</span><br><span class="line">	at java.net.URLClassLoader.access$100(URLClassLoader.java:71)</span><br><span class="line">	at java.net.URLClassLoader$1.run(URLClassLoader.java:361)</span><br><span class="line">	at java.net.URLClassLoader$1.run(URLClassLoader.java:355)</span><br><span class="line">	at java.security.AccessController.doPrivileged(Native Method)</span><br><span class="line">	at java.net.URLClassLoader.findClass(URLClassLoader.java:354)</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:425)</span><br><span class="line">	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:308)</span><br><span class="line">	at java.lang.ClassLoader.loadClass(ClassLoader.java:358)</span><br><span class="line">	at sun.launcher.LauncherHelper.checkAndLoadMain(LauncherHelper.java:482)</span><br></pre></td></tr></table></figure>
+<p>这是因为设置export ALT_BOOTDIR设置的是JDK1.7的，出现这个错误是因为用高版本的的JDK编译的class放到低版本来执行才会出现这个错误</p>
+<p>我编译的JDK是1.7所以要设置1.6的JDK才行</p>
+<p>但是本宝宝后来想了想觉得编译1.7的版本太低了,就索性直接编译JDK1.8的吧.</p>
+<h6 id="2-3-1下载jdk1-8"><a href="#2-3-1下载jdk1-8" class="headerlink" title="2.3.1下载jdk1.8"></a>2.3.1下载jdk1.8</h6><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost jdk]<span class="comment"># hg clone http://hg.openjdk.java.net/jdk8u/jdk8u-dev</span></span><br></pre></td></tr></table></figure>
+<p>下载步骤同上代码要保证都下载完成,因为这个有点不稳定可能某些模块下载失败,下载失败就手动执行命令下载.</p>
+<h6 id="2-3-2编译jdk1-8"><a href="#2-3-2编译jdk1-8" class="headerlink" title="2.3.2编译jdk1.8"></a>2.3.2编译jdk1.8</h6><p>cd进入1.8代码目录,而且要把环境变量的设置都执行一遍和上面2.1一样,然后授权configure文件，授权后执行configure文件，就会生成一个build文件夹等下编译的内容全部会在这个文件夹下面．</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost jdk]<span class="comment"># cd jdk8u-dev</span></span><br><span class="line">[root@localhost jdk8u-dev]<span class="comment"># chmod +x configure</span></span><br><span class="line">[root@localhost jdk8u-dev]<span class="comment"># configure</span></span><br></pre></td></tr></table></figure>
+<p>最后一步执行make</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost jdk8u-dev]<span class="comment"># make</span></span><br></pre></td></tr></table></figure>
+<p>这一步等时间比较长,执行完后如果没有error就表示编译成功了.</p>
+<p>然后打开build下面的那个文件夹<br><img src="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180805/2018-08-05%2011-36-42%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="image"></p>
+<p>hotspot,jaxp,corba,jaxws,jdk,langtools编译后的文件都有然后打开jdk文件夹</p>
+<p><img src="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180805/2018-08-05%2011-37-55%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="image"></p>
+<p>进入bin文件夹</p>
+<p><img src="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180805/2018-08-05%2011-38-32%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="image"></p>
+<p>java,javac,jmap,jps等java二进制文件都在然后执行./java -version</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost bin]<span class="comment"># ./java -version</span></span><br><span class="line">openjdk version <span class="string">"1.8.0-internal"</span></span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0-internal-lzq996298643_2018_08_05_10_25-b00)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.71-b00, mixed mode)</span><br></pre></td></tr></table></figure>
+<p>看到了版本为openjdk version “1.8.0-internal”.</p>
+
       
     </div>
     
@@ -481,12 +479,12 @@
   <!-- JS库 sweetalert 可修改路径 -->
   <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <p><span>本文标题:</span><a href="/hexot/2018/07/13/nutch代码研究/">nutch代码研究</a></p>
+  <p><span>本文标题:</span><a href="/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/">深入抛析JDK(编译JDK,阅读构建JDK代码)</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 廖振钦 的个人博客">廖振钦</a></p>
-  <p><span>发布时间:</span>2018年07月13日 - 14:07</p>
-  <p><span>最后更新:</span>2018年07月15日 - 17:07</p>
-  <p><span>原始链接:</span><a href="/hexot/2018/07/13/nutch代码研究/" title="nutch代码研究">http://qincloud.github.io/hexot/2018/07/13/nutch代码研究/</a>
-    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://qincloud.github.io/hexot/2018/07/13/nutch代码研究/"  aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2018年08月04日 - 09:08</p>
+  <p><span>最后更新:</span>2018年08月05日 - 11:08</p>
+  <p><span>原始链接:</span><a href="/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/" title="深入抛析JDK(编译JDK,阅读构建JDK代码)">http://qincloud.github.io/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://qincloud.github.io/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/"  aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
 </div>
@@ -525,8 +523,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/hexot/2018/07/05/zookeeper-java例子/" rel="next" title="zookeeper java例子">
-                <i class="fa fa-chevron-left"></i> zookeeper java例子
+              <a href="/hexot/2018/07/15/solr源代码阅读与运行调试/" rel="next" title="solr源代码阅读与运行调试">
+                <i class="fa fa-chevron-left"></i> solr源代码阅读与运行调试
               </a>
             
           </div>
@@ -534,10 +532,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/hexot/2018/07/15/solr源代码阅读与运行调试/" rel="prev" title="solr源代码阅读与运行调试">
-                solr源代码阅读与运行调试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -589,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -655,6 +658,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-jdk代码管理"><span class="nav-number">1.</span> <span class="nav-text">1.jdk代码管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-开始编译jdk代码"><span class="nav-number">2.</span> <span class="nav-text">2.开始编译jdk代码</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-1-设置编译环境变量"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 设置编译环境变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2依赖环境安装"><span class="nav-number">2.2.</span> <span class="nav-text">2.2依赖环境安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-3开始编译"><span class="nav-number">2.3.</span> <span class="nav-text">2.3开始编译</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-3-1下载jdk1-8"><span class="nav-number">2.3.1.</span> <span class="nav-text">2.3.1下载jdk1.8</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-3-2编译jdk1-8"><span class="nav-number">2.3.2.</span> <span class="nav-text">2.3.2编译jdk1.8</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
