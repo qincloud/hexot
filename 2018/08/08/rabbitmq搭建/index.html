@@ -125,16 +125,20 @@
 
 
 
-<meta name="description" content="博客是技术另一种表现方式.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="廖振钦的博客">
-<meta property="og:url" content="http://qincloud.github.io/hexot/categories/分布式/index.html">
+<meta name="description" content="一．配置erlang环境rabbitmq是用erlang语言编写的消息队列,Erlang([‘ə:læŋ])是一种通用的面向并发的编程语言. Erlang的官方网站上下载erlang博主下载的是otp_src_21.0.tar.gz版本点击下载即可. 下载完成后把文件解压出来进入文件夹编译安装erlang 123[ro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="rabbitmq搭建">
+<meta property="og:url" content="http://qincloud.github.io/hexot/2018/08/08/rabbitmq搭建/index.html">
 <meta property="og:site_name" content="廖振钦的博客">
-<meta property="og:description" content="博客是技术另一种表现方式.">
+<meta property="og:description" content="一．配置erlang环境rabbitmq是用erlang语言编写的消息队列,Erlang([‘ə:læŋ])是一种通用的面向并发的编程语言. Erlang的官方网站上下载erlang博主下载的是otp_src_21.0.tar.gz版本点击下载即可. 下载完成后把文件解压出来进入文件夹编译安装erlang 123[root@localhost otp_src_21.0]# chmod +x con">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180811/2018-08-11%2017-16-06%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180811/2018-08-11%2017-16-37%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-08-11T09:19:33.956Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="廖振钦的博客">
-<meta name="twitter:description" content="博客是技术另一种表现方式.">
+<meta name="twitter:title" content="rabbitmq搭建">
+<meta name="twitter:description" content="一．配置erlang环境rabbitmq是用erlang语言编写的消息队列,Erlang([‘ə:læŋ])是一种通用的面向并发的编程语言. Erlang的官方网站上下载erlang博主下载的是otp_src_21.0.tar.gz版本点击下载即可. 下载完成后把文件解压出来进入文件夹编译安装erlang 123[root@localhost otp_src_21.0]# chmod +x con">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180811/2018-08-11%2017-16-06%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png">
 
 
 
@@ -164,13 +168,13 @@
 
 
 
-  <link rel="canonical" href="http://qincloud.github.io/hexot/categories/分布式/"/>
+  <link rel="canonical" href="http://qincloud.github.io/hexot/2018/08/08/rabbitmq搭建/"/>
 
 
 
 
 
-  <title>分类: 分布式 | 廖振钦的博客</title>
+  <title>rabbitmq搭建 | 廖振钦的博客</title>
   
 
 
@@ -189,7 +193,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
     <a href="https://github.com/qincloud" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -317,83 +321,239 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>分布式<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://qincloud.github.io/hexot/hexot/2018/08/08/rabbitmq搭建/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="廖振钦">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/hexot/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="廖振钦的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/hexot/2018/07/05/zookeeper-java例子/" itemprop="url">
-              
-                <span itemprop="name">zookeeper java例子</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">rabbitmq搭建</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-05T19:40:21+08:00"
-              content="2018-07-05" >
-          07-05
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-08T08:05:32+08:00">
+                2018-08-08
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/hexot/2018/08/08/rabbitmq搭建/" class="leancloud_visitors" data-flag-title="rabbitmq搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h4 id="一．配置erlang环境"><a href="#一．配置erlang环境" class="headerlink" title="一．配置erlang环境"></a>一．配置erlang环境</h4><p>rabbitmq是用erlang语言编写的消息队列,Erlang([‘ə:læŋ])是一种通用的面向并发的编程语言.</p>
+<p><a href="http://www.erlang.org/downloads" target="_blank" rel="noopener">Erlang的官方网站</a>上下载erlang博主下载的是<a href="http://erlang.org/download/otp_src_21.0.tar.gz" target="_blank" rel="noopener">otp_src_21.0.tar.gz</a>版本点击下载即可.</p>
+<p>下载完成后把文件解压出来进入文件夹编译安装erlang</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost otp_src_21.0]<span class="comment"># chmod +x configure          #授权configure文件</span></span><br><span class="line">[root@localhost otp_src_21.0]<span class="comment"># configure --prefix=/usr/local/erlang    #执行configure并指定安装目录</span></span><br><span class="line">[root@localhost otp_src_21.0]<span class="comment"># make &amp;&amp; make install    #编译与安装</span></span><br></pre></td></tr></table></figure>
+<p>如果没有报错,然后再去指定的安装文件夹下看到了bin和lib文件夹,那么就安装完成了.</p>
+<p>然后配置环境变量在/etc/profile文件夹下加入</p>
+<p>export ERL_HOME=/usr/local/erlang</p>
+<p>export PATH=:$ERL_HOME/bin</p>
+<p>加入好环境变量之后执行erl命令如果进入erl命令行就说明erlang完成搭建了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[lzq996298643@localhost ~]$ erl</span><br><span class="line">Erlang/OTP 21 [erts-10.0] [<span class="built_in">source</span>] [64-bit] [smp:8:8] [ds:8:8:10] [async-threads:1] [hipe]</span><br><span class="line"></span><br><span class="line">Eshell V10.0  (abort with ^G)</span><br><span class="line">1&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="二-编译安装rabbitmq"><a href="#二-编译安装rabbitmq" class="headerlink" title="二. 编译安装rabbitmq"></a>二. 编译安装rabbitmq</h4><h5 id="二-一-下载rabbitmq源代码包"><a href="#二-一-下载rabbitmq源代码包" class="headerlink" title="二.一 下载rabbitmq源代码包"></a>二.一 下载rabbitmq源代码包</h5><p><a href="http://www.rabbitmq.com/" target="_blank" rel="noopener">RabbitMQ官方网站</a>可以找到下载的源代码地址</p>
+<p>博主下载的是3.7.7的版本的RabbitMQ<a href="https://github.com/rabbitmq/rabbitmq-server/releases/tag/v3.7.7" target="_blank" rel="noopener">下载地址</a>这里可以下载源代码也可以下载rpm包和window下的exe软件安装包.</p>
+<p>本宝宝下载的是<a href="https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.7/rabbitmq-server-3.7.7.tar.xz" target="_blank" rel="noopener">源代码包</a>,下载完成后解压软件包,然后进入解压的文件夹,打开Makefile文件,找到RMQ_ERLAPP_DIR这一段然后修改成要编译的地址</p>
+<p>我修改到了/usr/local文件夹下</p>
+<p>RMQ_ERLAPP_DIR ?= /usr/local/rabbitmq_server</p>
+<p>修改完后执行make &amp;&amp; make install</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make[2]: elixir：命令未找到</span><br><span class="line"> GEN    escript/rabbitmqctl</span><br><span class="line">/bin/sh:行1: mix: 未找到命令</span><br></pre></td></tr></table></figure>
+<p>但是报了上面的错误了,是因为elixir没有安装</p>
+<h5 id="二-二-elixir的安装"><a href="#二-二-elixir的安装" class="headerlink" title="二.二 elixir的安装"></a>二.二 elixir的安装</h5><p>Elixir 是一个基于 Erlang 虚拟机的函数式、面向并行的通用编程语言。Elixir 以 Erlang 为基础，支持分布式、高容错、实时应用程序的开发，同时亦对其进行扩展使之借助宏实现元编程，并通过协议支持多态。</p>
+<p>首先现将elixir项目在github上面克隆下来git clone <a href="https://github.com/elixir-lang/elixir.git" target="_blank" rel="noopener">https://github.com/elixir-lang/elixir.git</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[lzq996298643@localhost 开源代码]$ git <span class="built_in">clone</span> https://github.com/elixir-lang/elixir.git</span><br></pre></td></tr></table></figure>
+<p>进入elixir文件夹,然后直接make clean test,make install,执行make test可能会有错误(去谷歌搜索可以找到答案).</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[lzq996298643@localhost elixir]$ make clean <span class="built_in">test</span></span><br><span class="line">[lzq996298643@localhost elixir]$ make install</span><br></pre></td></tr></table></figure>
+<p>安装完exlixir在去make安装rabbitemq报了下面的错误,意思就是只支持exlixir1.6.0版本的</p>
+<p>(Mix) You’re trying to run :rabbitmqctl on Elixir v1.8.0-dev but it has declared in its mix.exs file it supports only Elixir ~&gt; 1.6.0</p>
+<p>git branch -a 查看有什么其它版本,然后替换为１.6.0的版本.再重新make安装exlixir</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">[lzq996298643@localhost elixir]$ git branch -a                  <span class="comment">#查看项目版本有多少</span></span><br><span class="line">* master</span><br><span class="line">  remotes/origin/HEAD -&gt; origin/master</span><br><span class="line">  remotes/origin/emj/deps-paths-level</span><br><span class="line">  remotes/origin/jv-no-19</span><br><span class="line">  remotes/origin/master</span><br><span class="line">  remotes/origin/mm/compiler-warnings-errors</span><br><span class="line">  remotes/origin/mm/records</span><br><span class="line">  remotes/origin/v1.0</span><br><span class="line">  remotes/origin/v1.1</span><br><span class="line">  remotes/origin/v1.2</span><br><span class="line">  remotes/origin/v1.3</span><br><span class="line">  remotes/origin/v1.4</span><br><span class="line">  remotes/origin/v1.5</span><br><span class="line">  remotes/origin/v1.6</span><br><span class="line">  remotes/origin/v1.7</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">[lzq996298643@localhost elixir]$ git checkout origin/v1.6      <span class="comment">#替换为1.6版本</span></span><br><span class="line">Note: checking out <span class="string">'origin/v1.6'</span>.</span><br><span class="line"></span><br><span class="line">You are <span class="keyword">in</span> <span class="string">'detached HEAD'</span> state. You can look around, make experimental</span><br><span class="line">changes and commit them, and you can discard any commits you make <span class="keyword">in</span> this</span><br><span class="line">state without impacting any branches by performing another checkout.</span><br><span class="line"></span><br><span class="line">If you want to create a new branch to retain commits you create, you may</span><br><span class="line"><span class="keyword">do</span> so (now or later) by using -b with the checkout <span class="built_in">command</span> again. Example:</span><br><span class="line"></span><br><span class="line">  git checkout -b new_branch_name</span><br><span class="line"></span><br><span class="line">HEAD 目前位于 b6d27b5... Ignore unknown child info <span class="keyword">in</span> Logger.Translator (<span class="comment">#7892)</span></span><br><span class="line">[lzq996298643@localhost elixir]$ cat VERSION                         <span class="comment">#查看版本</span></span><br><span class="line">1.6.6</span><br><span class="line">[lzq996298643@localhost elixir]$ make clean <span class="built_in">test</span></span><br><span class="line">[lzq996298643@localhost elixir]$ make install</span><br></pre></td></tr></table></figure>
+<p>结束了elixir的安装到rabbitmq源代码源文件夹下直接make &amp;&amp; make install</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost rabbitmq]<span class="comment"># make &amp;&amp; make install</span></span><br></pre></td></tr></table></figure>
+<h5 id="二-三-启动rabbitmq和安装web管理界面"><a href="#二-三-启动rabbitmq和安装web管理界面" class="headerlink" title="二.三 启动rabbitmq和安装web管理界面"></a>二.三 启动rabbitmq和安装web管理界面</h5><p>创建/etc/rabbitmq目录,这个必须要创建且不能修改</p>
+<p>然后到rabbitmq安装目录下sbin执行rabbitmq-plugins enable rabbitmq_management</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost sbin]<span class="comment"># rabbitmq-plugins enable rabbitmq_management</span></span><br><span class="line">The following plugins have been configured:</span><br><span class="line">  rabbitmq_management</span><br><span class="line">  rabbitmq_management_agent</span><br><span class="line">  rabbitmq_web_dispatch</span><br><span class="line">Applying plugin configuration to rabbit@localhost...</span><br><span class="line">The following plugins have been enabled:</span><br><span class="line">  rabbitmq_management</span><br><span class="line">  rabbitmq_management_agent</span><br><span class="line">  rabbitmq_web_dispatch</span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> 3 plugins.</span><br><span class="line">Offline change; changes will take effect at broker restart.</span><br></pre></td></tr></table></figure>
+<p>然后新建/etc/rabbitmq/rabbitmq-env.conf文件添加以下内容</p>
+<p>RABBITMQ_LOG_BASE=/data/rabbitmq/logs                 #日志存放地址<br>RABBITMQ_MNESIA_BASE=/data/rabbitmq/mnesia     #mnesia数据库地址</p>
+<p>配置完成后到安装目录sbin目录下启动rabbitmq服务<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost sbin]<span class="comment"># ./rabbitmq-server -detached</span></span><br><span class="line">WARNING: Removing trailing slash from RABBITMQ_LOG_BASE</span><br><span class="line">Warning: PID file not written; -detached was passed.</span><br></pre></td></tr></table></figure></p>
+<p>rabbitemq默认服务端口是5672,http界面默认的端口是15672</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost rabbitmq]<span class="comment"># lsof -i:5672</span></span><br><span class="line">COMMAND    PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME</span><br><span class="line">beam.smp 12831 root   69u  IPv6 129168      0t0  TCP *:amqp (LISTEN)</span><br></pre></td></tr></table></figure>
+<p>执行上面命令如果有东西,说明服务已经启动了.</p>
+<p>打开 <a href="http://localhost:15672/" target="_blank" rel="noopener">http://localhost:15672/</a>  地址<br><img src="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180811/2018-08-11%2017-16-06%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="image"></p>
+<p>默认帐号密码都是guest,登录进入.</p>
+<p><img src="https://raw.githubusercontent.com/qincloud/cloudconfig/master/images/20180811/2018-08-11%2017-16-37%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png" alt="image"></p>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/hexot/2018/06/08/从paxos到zookeeper分布式一致性原理与实践-笔记-重点-读后感/" itemprop="url">
-              
-                <span itemprop="name">从paxos到zookeeper分布式一致性原理与实践(笔记,重点,读后感)</span>
-              
-            </a>
-        
-      </h2>
+      
+    </div>
+    
+    
+    
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-08T08:11:59+08:00"
-              content="2018-06-08" >
-          06-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">本文结束<i class="fa fa-paw"></i> 3Q YOU</div>
+    
+</div>
 
       
     </div>
 
+    <div>
+          
+            
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/hexot/2018/08/08/rabbitmq搭建/">rabbitmq搭建</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 廖振钦 的个人博客">廖振钦</a></p>
+  <p><span>发布时间:</span>2018年08月08日 - 08:08</p>
+  <p><span>最后更新:</span>2018年08月11日 - 17:08</p>
+  <p><span>原始链接:</span><a href="/hexot/2018/08/08/rabbitmq搭建/" title="rabbitmq搭建">http://qincloud.github.io/hexot/2018/08/08/rabbitmq搭建/</a>
+    <span class="copy-path"  title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://qincloud.github.io/hexot/2018/08/08/rabbitmq搭建/"  aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          icon: "success",
+          showConfirmButton: true
+          });
+        });
+    });
+</script>
+
+
+          
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexot/2018/08/04/深入抛析JDK-编译JDK-阅读构建JDK代码/" rel="next" title="深入抛析JDK(编译JDK,阅读构建JDK代码)">
+                <i class="fa fa-chevron-left"></i> 深入抛析JDK(编译JDK,阅读构建JDK代码)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -401,6 +561,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -421,8 +585,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -487,6 +660,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一．配置erlang环境"><span class="nav-number">1.</span> <span class="nav-text">一．配置erlang环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-编译安装rabbitmq"><span class="nav-number">2.</span> <span class="nav-text">二. 编译安装rabbitmq</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#二-一-下载rabbitmq源代码包"><span class="nav-number">2.1.</span> <span class="nav-text">二.一 下载rabbitmq源代码包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二-二-elixir的安装"><span class="nav-number">2.2.</span> <span class="nav-text">二.二 elixir的安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#二-三-启动rabbitmq和安装web管理界面"><span class="nav-number">2.3.</span> <span class="nav-text">二.三 启动rabbitmq和安装web管理界面</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -621,6 +810,10 @@
   
 
   
+  <script type="text/javascript" src="/hexot/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/hexot/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
